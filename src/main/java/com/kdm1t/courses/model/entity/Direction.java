@@ -23,7 +23,7 @@ public class Direction {
     @Column(unique = true)
     private String directionOfStudy;
 
-    @OneToMany(mappedBy = "directionOfStudy")
+    @OneToMany(mappedBy = "directionOfStudy", cascade = CascadeType.REMOVE)
     @JsonIgnore
     private List<Course> courses;
 

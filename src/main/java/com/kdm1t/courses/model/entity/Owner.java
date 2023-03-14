@@ -23,7 +23,7 @@ public class Owner {
     @Column(unique = true)
     private String organization;
 
-    @OneToMany(mappedBy = "owner")
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.REMOVE)
     @JsonIgnore
     List<Course> courses;
 

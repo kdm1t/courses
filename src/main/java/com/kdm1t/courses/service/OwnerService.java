@@ -11,7 +11,11 @@ public class OwnerService {
 
     private final OwnerRepository ownerRepository;
 
-    public Owner create(String organization) {
+    public Owner findOrCreate(String organization) {
+        return ownerRepository.findByOrganizationIgnoreCase(organization).orElseGet(() -> create(organization));
+    }
+
+    private Owner create(String organization) {
         Owner owner = new Owner();
         owner.setOrganization(organization);
         return ownerRepository.save(owner);

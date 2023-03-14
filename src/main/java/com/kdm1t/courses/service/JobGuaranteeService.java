@@ -11,7 +11,11 @@ public class JobGuaranteeService {
 
     private final JobGuaranteeRepository jobGuaranteeRepository;
 
-    public JobGuarantee create(boolean jobGuarantee) {
+    public JobGuarantee findOrCreate(boolean jobGuarantee) {
+        return jobGuaranteeRepository.findByJobGuarantee(jobGuarantee).orElseGet(() -> create(jobGuarantee));
+    }
+
+    private JobGuarantee create(boolean jobGuarantee) {
         JobGuarantee jb = new JobGuarantee();
         jb.setJobGuarantee(jobGuarantee);
         return jobGuaranteeRepository.save(jb);
