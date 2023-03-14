@@ -8,5 +8,5 @@ import java.util.Optional;
 
 @Repository
 public interface DirectionRepository extends CrudRepository<Direction, Long> {
-    Optional<Direction> findByDirectionOfStudy(String directionOfStudy);
+    Optional<Direction> findByDirectionOfStudyIgnoreCase(String directionOfStudy);
 }

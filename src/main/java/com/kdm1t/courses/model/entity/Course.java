@@ -15,6 +15,7 @@ public class Course {
     @JsonIgnore
     private Long id;
 
+    @Column(nullable = false)
     private String name;
 
     private Integer duration;
@@ -30,7 +31,7 @@ public class Course {
     @ManyToOne
     private Direction directionOfStudy;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.REMOVE)
     private Credit credit;
 
 }

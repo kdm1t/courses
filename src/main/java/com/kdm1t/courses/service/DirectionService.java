@@ -11,7 +11,11 @@ public class DirectionService {
 
     private final DirectionRepository directionRepository;
 
-    public Direction create(String directionOfStudy) {
+    public Direction findOrCreate(String directionOfStudy) {
+        return directionRepository.findByDirectionOfStudyIgnoreCase(directionOfStudy).orElseGet(() -> create(directionOfStudy));
+    }
+
+    private Direction create(String directionOfStudy) {
         Direction direction = new Direction();
         direction.setDirectionOfStudy(directionOfStudy);
         return directionRepository.save(direction);

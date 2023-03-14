@@ -8,5 +8,7 @@ import java.util.Optional;
 
 @Repository
 public interface OwnerRepository extends CrudRepository<Owner, Long> {
-    Optional<Owner> findByOrganization(String organization);
+    Optional<Owner> findByOrganizationIgnoreCase(String organization);
+
+    void deleteByOrganization(String organization);
 }
